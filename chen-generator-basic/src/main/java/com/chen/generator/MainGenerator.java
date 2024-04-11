@@ -27,17 +27,16 @@ public class MainGenerator {
      */
     public static void doGenerate(Object model) throws TemplateException, IOException {
         String projectPath = System.getProperty("user.dir");
-
-
+        File parentFile = new File(projectPath).getParentFile();
         // 生成静态文件
-        String inputStatusPath = new File(projectPath, "demoProjects/acmTemplate").getAbsolutePath();
-        String outputStatusPath = projectPath;
-        StaticGenerator.copyFilesByRecursive(inputStatusPath, outputStatusPath);
+        String inputStatusPath = new File(parentFile, "demoProjects/acmTemplate").getAbsolutePath();
+        String outputStatusPath = parentFile.getPath();
+        StaticGenerator.copyFilesByHutool(inputStatusPath, outputStatusPath);
 
 
         // 生成动态文件（只需要将静态生成的文件覆盖即可）
-        String inputDynamicFilePath = projectPath + File.separator +"chen-generator-basic"+File.separator+ "src/main/resources/templates/MainTemplate.java.ftl";
-        String outputDynamicFilePath = outputStatusPath + File.separator + "acmTemplate/src/com/chen/acm/MainTemplate.java";
+        String inputDynamicFilePath = projectPath+File.separator+ "src/main/resources/templates/MainTemplate.java.ftl";
+        String outputDynamicFilePath = parentFile + File.separator + "acmTemplate/src/com/chen/acm/MainTemplate.java";
         DynamicGenerator.doGenerate(inputDynamicFilePath, outputDynamicFilePath, model);
     }
 

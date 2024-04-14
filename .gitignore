@@ -5,6 +5,7 @@
 ### Custom Template
 .idea
 chen-generator.iml
+generated
 
 # Log file
 *.log

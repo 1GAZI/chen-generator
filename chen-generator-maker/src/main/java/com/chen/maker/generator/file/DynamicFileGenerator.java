@@ -1,7 +1,6 @@
-package com.chen.generator;
+package com.chen.maker.generator.file;
 
 import cn.hutool.core.io.FileUtil;
-import com.chen.model.MainTemplateConfig;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -14,19 +13,7 @@ import java.io.Writer;
 /**
  * 动态文件生成
  */
-public class DynamicGenerator {
-
-    public static void main(String[] args) throws IOException, TemplateException {
-        String projectPath = System.getProperty("user.dir");
-        String inputPath = projectPath + File.separator +"chen-generator-basic"+File.separator+ "src/main/resources/templates/MainTemplate.java.ftl";
-        String outputPath = projectPath + File.separator + "MainTemplate.java";
-        //创建模板替换配置对象
-        MainTemplateConfig mainTemplateConfig = new MainTemplateConfig();
-        mainTemplateConfig.setAuthor("chen");
-        mainTemplateConfig.setLoop(false);
-        mainTemplateConfig.setOutputText("求和结果：");
-        doGenerate(inputPath, outputPath, mainTemplateConfig);
-    }
+public class DynamicFileGenerator {
 
     /**
      * 生成文件

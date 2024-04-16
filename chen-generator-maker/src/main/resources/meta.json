@@ -6,8 +6,9 @@
   "author": "chen",
   "createTime": "2024-4-14",
   "fileConfig": {
-    "inputRootPath": "D:/java/code/chen-generator/demoProjects/acmTemplate-pro",
-    "outputRootPath": "D:/java/code/chen-generator/generated",
+    "inputRootPath": ".source/acmTemplate-pro",
+    "outputRootPath": "generated",
+    "sourceRootPath": "D:/java/code/chen-generator/demoProjects/acmTemplate-pro",
     "type": "dir",
     "files": [
       {

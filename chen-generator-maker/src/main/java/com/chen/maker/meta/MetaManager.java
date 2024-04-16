@@ -11,11 +11,11 @@ public class MetaManager {
         // 私有构造函数，防止外部实例化
     }
 
+    //双检锁单例模式
     public static Meta getMetaObject() {
-        //双检锁单例模式
-        if (meta == null) {// Single Checked
+        if (meta == null) {
             synchronized (MetaManager.class) {
-                if (meta == null) {     // Double checked
+                if (meta == null) {
                     meta = initMeta();
                 }
             }
@@ -26,7 +26,8 @@ public class MetaManager {
     private static Meta initMeta() {
         String metaJson = ResourceUtil.readUtf8Str("meta.json");
         Meta newMeta = JSONUtil.toBean(metaJson, Meta.class);
-        Meta.FileConfig fileConfig = newMeta.getFileConfig();
+        // 校验和处理默认值
+        MetaValidator.doValidAndFill(newMeta);
         return newMeta;
     }
 }

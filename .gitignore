@@ -6,7 +6,7 @@
 .idea
 chen-generator.iml
 generated
-
+.temp
 # Log file
 *.log
 

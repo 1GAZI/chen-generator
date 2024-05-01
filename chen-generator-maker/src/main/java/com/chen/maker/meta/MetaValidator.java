@@ -7,8 +7,6 @@ import cn.hutool.core.util.StrUtil;
 import com.chen.maker.meta.enums.FileGenerateTypeEnum;
 import com.chen.maker.meta.enums.FileTypeEnum;
 import com.chen.maker.meta.enums.ModelTypeEnum;
-
-
 import java.io.File;
 import java.nio.file.Paths;
 import java.util.List;
@@ -74,7 +72,7 @@ public class MetaValidator {
         }
         // inputRootPath：.source + sourceRootPath 的最后一个层级路径
         String inputRootPath = fileConfig.getInputRootPath();
-        String defaultInputRootPath = ".source" + File.separator + FileUtil.getLastPathEle(Paths.get(sourceRootPath)).getFileName().toString();
+        String defaultInputRootPath = ".source/" + FileUtil.getLastPathEle(Paths.get(sourceRootPath)).getFileName().toString();
         if (StrUtil.isEmpty(inputRootPath)) {
             fileConfig.setInputRootPath(defaultInputRootPath);
         }
@@ -149,4 +147,5 @@ public class MetaValidator {
         meta.setVersion(version);
         meta.setCreateTime(createTime);
     }
+
 }

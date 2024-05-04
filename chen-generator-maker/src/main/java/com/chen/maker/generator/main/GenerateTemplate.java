@@ -4,6 +4,7 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.resource.ClassPathResource;
 import cn.hutool.core.util.StrUtil;
 
+import cn.hutool.core.util.ZipUtil;
 import com.chen.maker.generator.JarGenerator;
 import com.chen.maker.generator.ScriptGenerator;
 import com.chen.maker.generator.file.DynamicFileGenerator;
@@ -162,7 +163,7 @@ public abstract class GenerateTemplate {
      * @param jarPath
      * @param shellOutputFilePath
      */
-    protected void buildDist(String outputPath, String sourceCopyDestPath, String jarPath, String shellOutputFilePath) {
+    protected String buildDist(String outputPath, String sourceCopyDestPath, String jarPath, String shellOutputFilePath) {
         String distOutputPath = outputPath + "-dist";
         // 拷贝 jar 包
         String targetAbsolutePath = distOutputPath + File.separator + "target";
@@ -173,5 +174,20 @@ public abstract class GenerateTemplate {
         FileUtil.copy(shellOutputFilePath, distOutputPath, true);
         // 拷贝源模板文件
         FileUtil.copy(sourceCopyDestPath, distOutputPath, true);
+
+        return  distOutputPath;
     }
+
+
+    /**
+     * 生成压缩包
+     * @param outputPath
+     * @return
+     */
+    protected String buildZip(String outputPath){
+        String zipPath = outputPath + ".zip";
+        ZipUtil.zip(outputPath,zipPath);
+        return zipPath;
+    }
+
 }

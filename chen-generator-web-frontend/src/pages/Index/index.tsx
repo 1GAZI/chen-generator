@@ -8,6 +8,7 @@ import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'umi';
 
+
 /**
  * 默认分页参数
  */
@@ -160,7 +161,7 @@ const IndexPage: React.FC = () => {
         renderItem={(data) => (
           <List.Item>
             <Link to={`/generator/detail/${data.id}`}>
-              <Card hoverable cover={<Image alt={data.name} src={data.picture} />}>
+              <Card hoverable cover={<Image alt={data.name} src={data.picture} style={{ width: 255, height: 200 }} />}>
                 <Card.Meta
                   title={<a>{data.name}</a>}
                   description={
@@ -183,6 +184,7 @@ const IndexPage: React.FC = () => {
           </List.Item>
         )}
       />
+
     </PageContainer>
   );
 };

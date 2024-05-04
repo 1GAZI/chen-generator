@@ -8,6 +8,9 @@ export default [
     ],
   },
   { path: '/', icon: 'home', component: './Index', name: '主页' },
+  { path: '/generator/add', icon: 'plus', component: './Generator/Add', name: '创建生成器' },
+  { path: '/generator/detail/:id', icon: 'plus', component: './Generator/Detail', name: '生成器详情页 ',hideInMenu:true },
+  { path: '/generator/update', icon: 'plus', component: './Generator/Add', name: '修改生成器' ,hideInMenu:true},
   {
     path: '/admin',
     icon: 'crown',

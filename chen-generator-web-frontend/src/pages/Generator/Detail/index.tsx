@@ -35,9 +35,9 @@ const GeneratorDetailPage: React.FC = () => {
     }
     setLoading(true);
     try {
-      // @ts-ignore
+
       const res = await getGeneratorVoByIdUsingGet({
-        // @ts-ignore
+       // @ts-ignore
         id,
       });
       setData(res.data || {});

@@ -1,6 +1,6 @@
 package com.yupi.web.model.dto.Generator;
 
-import com.yupi.web.meta.Meta;
+import com.chen.maker.meta.Meta;
 import lombok.Data;
 
 import java.io.Serializable;

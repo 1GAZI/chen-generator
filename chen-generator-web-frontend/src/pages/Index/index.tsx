@@ -1,5 +1,5 @@
 import {
-  listGeneratorVoByPageUsingPost
+  listGeneratorVoByPageFastUsingPost
 } from '@/services/backend/generatorController';
 import { UserOutlined } from '@ant-design/icons';
 import { PageContainer, ProFormSelect, ProFormText, QueryFilter } from '@ant-design/pro-components';
@@ -7,7 +7,6 @@ import { Avatar, Card, Flex, Image, Input, List, message, Tabs, Tag, Typography 
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'umi';
-
 
 /**
  * 默认分页参数
@@ -38,7 +37,7 @@ const IndexPage: React.FC = () => {
   const doSearch = async () => {
     setLoading(true);
     try {
-      const res = await listGeneratorVoByPageUsingPost(searchParams);
+      const res = await listGeneratorVoByPageFastUsingPost(searchParams);
       setDataList(res.data?.records ?? []);
       setTotal(Number(res.data?.total) ?? 0);
     } catch (error: any) {
@@ -161,7 +160,7 @@ const IndexPage: React.FC = () => {
         renderItem={(data) => (
           <List.Item>
             <Link to={`/generator/detail/${data.id}`}>
-              <Card hoverable cover={<Image alt={data.name} src={data.picture} style={{ width: 255, height: 200 }} />}>
+              <Card hoverable cover={<Image alt={data.name} src={data.picture} />}>
                 <Card.Meta
                   title={<a>{data.name}</a>}
                   description={
@@ -172,7 +171,7 @@ const IndexPage: React.FC = () => {
                 />
                 {tagListView(data.tags)}
                 <Flex justify="space-between" align="center">
-                    <Typography.Text type="secondary" style={{ fontSize: 12 }}>
+                  <Typography.Text type="secondary" style={{ fontSize: 12 }}>
                     {moment(data.createTime).fromNow()}
                   </Typography.Text>
                   <div>
@@ -184,7 +183,6 @@ const IndexPage: React.FC = () => {
           </List.Item>
         )}
       />
-
     </PageContainer>
   );
 };
